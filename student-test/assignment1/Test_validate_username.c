@@ -18,5 +18,14 @@ void test_validate_my_username()
      * TODO: Replace the line below with your code here as described above to verify your /conf/username.txt 
      * config file and my_username() functions are setup properly
      */
-    TEST_ASSERT_TRUE_MESSAGE(false,"AESD students, please fix me!");
+     
+     // Step 1: Get the hard-coded username from autotest-validate.c
+    const char *autotestUsername = my_username();
+
+    // Step 2: Get the username from the configuration file using malloc_username_from_conf_file()
+    const char *confFileUsername = malloc_username_from_conf_file();
+
+    // Step 3: Compare the two usernames using Unity's assertion
+    TEST_ASSERT_EQUAL_STRING_MESSAGE(autotestUsername, confFileUsername, "Usernames do not match!");
+
 }
